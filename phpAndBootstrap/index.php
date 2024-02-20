@@ -27,8 +27,8 @@ $result = mysqli_query($conn, $sql);
         <?php
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                echo "Written by: " . $row["writer"] . " <br>Sent at: " . $row["sendtime"] . " <br>Content: " . $row["message"];
-                echo('<br> <br>');
+                echo "Written by: " . $row["writer"] . " <br>Sent at: " . $row["sendtime"] . " <br>Content: <b>" . $row["message"];
+                echo('</b><br> <br>');
             }
         } else {
             echo "0 results";
@@ -36,31 +36,29 @@ $result = mysqli_query($conn, $sql);
         ?>
     </div>
 
-    <div class="flex-column w-25 p-3 border border-3 border-dark rounded-5">
+    <div class="flex-column ms-3 w-25 p-3 border border-3 border-dark rounded-5">
         <form action="login.php" method="post" class="border border-3 border-dark p-3 rounded-5 mb-3">
             <label>If
                 <input type="text" name="writer">
                 has no account, please</label><br>
-            <button class="rounded-pill" type="submit">create account</button>
+            <button class="rounded-pill mt-2" type="submit">create an account</button>
             <label>.</label>
         </form>
         <form action="newChatEntry.php" method="post" class="border border-3 border-dark p-3 rounded-5 mb-3">
             <label>I'm known as
-                <input class="form-control" list="browsers" name="writer">
-                <datalist id="browsers">
+                <select name="writer" id="Usernames">
                     <?php
                     $sql = "SELECT name FROM user";
                     $writers = mysqli_query($conn, $sql);
-                    while ($Wrow = mysqli_fetch_assoc($result)) {
-                        echo "<option value=" . $Wrow["name"];
+                    while ($Wrow = mysqli_fetch_assoc($writers)) {
+                        echo "<option value=" . $Wrow["name"] . ">" . $Wrow["name"] . "</option>";
                     }
                     ?>
-                    <option value="Safari">
-                </datalist>
+                </select>
             </label><br>
             <label>Message:
                 <input type="text" name="message"></label><br>
-            <button class="rounded-pill" type="submit">SENDEN</button>
+            <button class="rounded-pill mt-2" type="submit">SENDEN</button>
         </form>
         <form action="delAll.php" method="post">
             <button class="rounded-pill" type="submit">Delete all Data</button>
