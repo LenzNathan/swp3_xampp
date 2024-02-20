@@ -12,7 +12,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "Delete from newsletter";
+$sql = "Truncate newsletter";
 $result = mysqli_query($conn, $sql);
 
 header("Location:index.php");

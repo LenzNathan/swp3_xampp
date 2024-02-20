@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Global Chat</title>
-    <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-info-subtle">
 Inserting...
